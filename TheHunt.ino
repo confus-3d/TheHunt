@@ -451,10 +451,10 @@ void keyDisplayLoop() {
       setColor(GREEN); 
       break;
     case KWM:
-      setColor(YELLOW);
+      setColor(BLUE);
       break;
     case KWC:
-      setColor(YELLOW);
+      setColor(BLUE);
       break;
     case KE:
       setColorOnFace(RED, 0);
