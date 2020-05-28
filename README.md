@@ -23,9 +23,9 @@ The game go in rounds, one player at a time, following this scheme:
 
 2 - Active player put the "key" blink on the board and HAVE TO choose between two actions:
 
-      -Move: Press a neighbour blink of your actual position to move to that spot.
+   -Move: Press a neighbour blink of your actual position to move to that spot.
       
-      -Smell/Hear: Press your actual position to Smell if you are the MONSTER or Hear if you are the CITIZEN, if you are the monster and the citizen is on a neighbour cell, you smell it and your grid became yellow, if you are the citizen and the monster is on a neighbour cell, you hear it and your cell became yellow.
+   -Smell/Hear: Press your actual position to Smell if you are the MONSTER or Hear if you are the CITIZEN, if you are the monster and the citizen is on a neighbour cell, you smell it and your grid became yellow, if you are the citizen and the monster is on a neighbour cell, you hear it and your cell became yellow.
       
 3 - Press your "key" to hide the board and put all blinks into waiting state.
 
