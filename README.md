@@ -19,7 +19,7 @@ To start the game, every player start on a side of the board, aproximate their "
 
 The game go in rounds, one player at a time, following this scheme:
 
-1 - Determine the active player, the other player close their eyes.
+1 - Determine the active player, the other player close their eyes. (MONSTER start 1st round)
 
 2 - Active player put the "key" blink on the board and HAVE TO choose between two actions:
 
