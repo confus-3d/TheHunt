@@ -4,12 +4,28 @@
     Lead development by FJ Rios
     original game by FJ Rios
 
-    Rules: 
+    Rules:
+    12+ Blinks (18 Recomended)
+    2 Players (MONSTER=RED and CITIZEN=GREEN)
+    1st- Leave a blink alone, this will be KEY blink, and press to chose first player
+    2nd- Player attach KEY to the Blinks Board, and press an adjacent Blink to move to starting position.
+    3rd- Put KEY alone to change player and do the same for second player 
+    GAME START!
+    MONSTER Player:
+    Move to an adjacent Blink to catch the CITIZEN or
+    Press your actual position to SMELL in the surroundings and check if CITIZEN is adjacent to your tile.
+    If you SMELL the CITIZEN the board turns YELLOW
+    If you catch the CITIZEN, you win and the board turns RED.
+    CITIZEN Player:
+    Move to an adjacent Blink to avoid the MONSTER or
+    Press your actual position to HEAR in the surroundings and check if MONSTER is adjacent to your tile.
+    If you HEAR the MONSTER the board turns YELLOW
+    If you avoid the MONSTER for several rounds, you win and the board turns GREEN.
+    
 
     --------------------
     Blinks by Move38
     Brought to life via Kickstarter 2018
-
     @madewithblinks
     www.move38.com
     --------------------
