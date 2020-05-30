@@ -1,4 +1,4 @@
-![TheHuntBanner](/images/the hunt banner.jpg)
+![TheHuntBanner](/images/thehuntbanner.jpg)
 
 # TheHunt
 
