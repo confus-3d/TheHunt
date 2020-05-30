@@ -1,3 +1,5 @@
+![TheHuntBanner](/images/the hunt banner.jpg)
+
 # TheHunt
 
 Game for Blinks by Move 38
