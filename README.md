@@ -35,7 +35,9 @@ The game go in rounds following this scheme:
 
 1 - KEY shows the active player, the other player close their eyes. (MONSTER is RED player, FARMER is GREEN player)
 
-2 - Active player put the KEY blink on the board and HAVE TO choose between two actions:
+2 - Active Player put the KEY blink on the Cornfield, revealing the actual position of that player. 
+
+3 - Active Player have to choose ONE action:
 
    -Move: Press a neighbour blink of your actual position to move to that spot.
       
@@ -43,7 +45,7 @@ The game go in rounds following this scheme:
 
 (If you are the monster and the farmer is on a neighbor cell, you smell it and surroundings blinks became YELLOW, if you are the citizen and the monster is on a neighbour cell, you hear it and surroundings blinks became YELLOW. If you don´t find anything, only your tile will became YELLOW)
       
-3 - KEY now turns BLUE and, if you pick it, it changes to the colour of the next player. Pass the KEY and next player Round begin.
+4 - Once action is done, KEY turns BLUE and, if you pick it, it changes to the colour of the next player. Pass the KEY and next player Round begin.
 
 # Win / Lose condition:
 
