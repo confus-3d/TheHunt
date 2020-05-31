@@ -11,7 +11,7 @@ Game for Blinks by Move 38
 # Story:
 
 You are a peaceful FARMER with a small Cornfield.
-One day, during your labour, you see on the ground a fress footprint.
+One day, during your labour, you see on the ground a fresh footprint.
 You take a closer look to the footprint and realize that is not a normal footprint.
 Is big, REALLY big, it has claws, and it has rest of blood.
 There is no time to be scared. You have to RUN.
