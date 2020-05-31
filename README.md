@@ -9,7 +9,7 @@ Game for Blinks by Move 38
 2 players.
 
 # Story:
-
+![TheHuntComic](/images/comic.jpg)
 You are a peaceful FARMER with a small Cornfield.
 One day, during your labour, you see on the ground a fresh footprint.
 You take a closer look to the footprint and realize that is not a normal footprint.
