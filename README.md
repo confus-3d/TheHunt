@@ -17,7 +17,7 @@ Is big, REALLY big, it has claws, and it has rest of blood.
 There is no time to be scared. You have to RUN.
 
 # Set Up:
-![TheHuntInstructions1](/images/instructions1.jpg)
+![TheHuntInstruction1](/images/instruction1.jpg)
 All blinks load showing the Cornfield.
 Arrange the Cornfield as you want, all Blinks must touch at least 2 Blinks.
 
