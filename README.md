@@ -38,9 +38,9 @@ The game go in rounds following this scheme:
 
 2 - Active Player have to choose ONE action:
 
-   -Move: Press a neighbour blink of your actual position to move to that spot.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Move: Press a neighbour blink of your actual position to move to that spot.
       
-   -Smell/Hear: Press your actual position to Smell if you are the MONSTER or Hear if you are the FARMER. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Smell/Hear: Press your actual position to Smell if you are the MONSTER or Hear if you are the FARMER. 
 
 (If you are the monster and the farmer is on a neighbor cell, you smell it and surroundings blinks became YELLOW, if you are the citizen and the monster is on a neighbour cell, you hear it and surroundings blinks became YELLOW. If you don´t find anything, only your tile will became YELLOW)
       
