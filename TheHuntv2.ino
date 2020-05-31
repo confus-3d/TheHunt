@@ -13,12 +13,12 @@
     MONSTER Player (connect KEY to board and Pick one action):
     -Move to an adjacent Blink to catch the CITIZEN or
     -Press your actual position to SMELL in the surroundings and check if CITIZEN is adjacent to your tile.
-    If you SMELL the CITIZEN the board turns YELLOW
+    If you SMELL the CITIZEN, tiles near your position turn YELLOW.
     If you catch the CITIZEN, you win and the board turns RED.
     CITIZEN Player (connect KEY to board Pick one action):
     -Move to an adjacent Blink to avoid the MONSTER or
     -Press your actual position to HEAR in the surroundings and check if MONSTER is adjacent to your tile.
-    If you HEAR the MONSTER the board turns YELLOW
+    If you HEAR the MONSTER tiles near your position turn YELLOW.
     If you avoid the MONSTER for several rounds, you win and the board turns GREEN.
     ADVANCED MODE:
     You can, instead using your action, take a tile from the board and put it into another place.
