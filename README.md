@@ -30,6 +30,7 @@ Once done, remove the KEY and do the same for the next player.
 This first action is visible for both players.
 
 # Rounds:
+![TheHuntInstruction2](/images/instruction2.jpg)
 KEY shows the active player, the other player close their eyes. (MONSTER is RED player, FARMER is GREEN player)
 
 The game go in rounds following this scheme:
