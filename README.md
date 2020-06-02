@@ -1,7 +1,6 @@
+![TheHuntBanner](/images/thehuntbanner2.jpg) 
+
 # TheHunt
-
-| ![TheHuntBanner](/images/thehuntbanner2.jpg)  | Game for Blinks by Move 38<br/>12 or more blinks. (18 recomended)<br/>2 players.  |
-
 Game for Blinks by Move 38
 
 12 or more blinks. (18 recomended)
