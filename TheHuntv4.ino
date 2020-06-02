@@ -380,6 +380,7 @@ void swapLoop() { //Extra feature, change a tile
         FOREACH_FACE(f) {
           if ( !isValueReceivedOnFaceExpired( f ) ) { 
             byte neighborGameState = getGameState(getLastValueReceivedOnFace(f));
+              numNeighbors++;
               if (numNeighbors >= 2){ //Prevent cheating
                   gameState = SLAVE;
               }
