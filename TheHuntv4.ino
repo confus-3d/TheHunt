@@ -290,8 +290,7 @@ if (Hear == NH && buttonSingleClicked()) { //If you are in a neighbor tile and c
         }
     }
 
-//Extra feature, change a tile
-        FOREACH_FACE(f) {
+    FOREACH_FACE(f) { //Extra feature, change a tile
           if ( !isValueReceivedOnFaceExpired( f ) ) { 
             byte neighborGameState = getGameState(getLastValueReceivedOnFace(f));
               if (neighborGameState == SWAP){
@@ -304,7 +303,7 @@ if (Hear == NH && buttonSingleClicked()) { //If you are in a neighbor tile and c
         if (isAlone() && Hear == NH){ //Prevent cheating avoiding to move tile if you are there
                 CWIN--;
                 gameState = SWAP;
-        }
+    }
 }
 
 void citizenLoop() {
@@ -358,8 +357,7 @@ if (Smell == NS && buttonSingleClicked()) { //If you are in a neighbor tile and 
          }
      }
 
-//Extra feature, change a tile
-        FOREACH_FACE(f) {
+  FOREACH_FACE(f) { //Extra feature, change a tile
           if ( !isValueReceivedOnFaceExpired( f ) ) {
             byte neighborGameState = getGameState(getLastValueReceivedOnFace(f));
               if (neighborGameState == SWAP){
@@ -372,10 +370,10 @@ if (Smell == NS && buttonSingleClicked()) { //If you are in a neighbor tile and 
                 CWIN--;
                 gameState = SWAP;
       
-        }
+   }
 }
 
-void swapLoop() { //Extra feature, change a tile
+void swapLoop() { //Extra feature loop, change a tile
   numNeighbors = 0;
         FOREACH_FACE(f) {
           if ( !isValueReceivedOnFaceExpired( f ) ) { 
