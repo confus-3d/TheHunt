@@ -178,6 +178,9 @@ void loop() {   // main loop
     case LOSE:
       sendData = (gameState);
       break;
+    case SWAP:
+      sendData = (gameState);
+      break;
   }
 
   setValueSentOnAllFaces(sendData);
