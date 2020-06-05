@@ -212,6 +212,8 @@ void keyLoop() { //KEY change during gameplay and alternate players
 
 if (gameState == KE){ //Initial coinflip to determine starting player
   if (buttonSingleClicked() || buttonDoubleClicked()){
+      Hear = NOISE;
+      Smell = STINK; 
       coinflip = random(1);
       if (coinflip == 0) {
         gameState = KM; 
@@ -225,13 +227,17 @@ if (gameState == KE){ //Initial coinflip to determine starting player
     if ( !isValueReceivedOnFaceExpired( f ) ) {
       byte neighborGameState = getGameState(getLastValueReceivedOnFace(f));
       if (neighborGameState == CLEARM) {
+          Hear = NH;
           gameState = KWC;
       }
       if (neighborGameState == CLEARC){
+          Smell = NS; 
           gameState = KWM;
       }
       if (gameState == KE && neighborGameState == SLAVE){ //Let you change the key if is not activated yet
           gameState = SLAVE;
+          Hear = NH;
+          Smell = NS; 
       }
     }
   }
@@ -284,9 +290,8 @@ if (Hear == NOISE && buttonSingleClicked()){ //If you are in the tile and click 
 if (Hear == NH && buttonSingleClicked()) { //If you are in a neighbor tile and click it, perform move
       FOREACH_FACE(f) {
           if ( !isValueReceivedOnFaceExpired( f ) ) { // Have we seen a neighbor
-            byte neighborGameState = getGameState(getLastValueReceivedOnFace(f));
             byte neighborHear = getHear(getLastValueReceivedOnFace(f));
-              if (neighborGameState == KM || neighborHear == NOISE){
+              if (neighborHear == NOISE){
                   Hear = NOISE;
                   gameState = CLEARM;
                   roundTimer.set(ROUND_TIME);
@@ -353,9 +358,8 @@ if (Smell == STINK && buttonSingleClicked()){ //If you are in the tile and click
 if (Smell == NS && buttonSingleClicked()) { //If you are in a neighbor tile and click it, perform move
   FOREACH_FACE(f) {
           if ( !isValueReceivedOnFaceExpired( f ) ) { 
-            byte neighborGameState = getGameState(getLastValueReceivedOnFace(f));
             byte neighborHear = getHear(getLastValueReceivedOnFace(f));
-              if (neighborGameState == KC || neighborHear == STINK){
+              if (neighborHear == STINK){
                   Smell = STINK;
                   gameState = CLEARC;
                   roundTimer.set(ROUND_TIME);
