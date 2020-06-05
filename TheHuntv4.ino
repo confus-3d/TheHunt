@@ -53,7 +53,8 @@ int brightness = 1;
 int step = STEP_SIZE;
 Timer HeartBeat;
 int resetPressed;
-
+Timer Wheel;
+#define LOOP 200
 int numNeighbors;
 int numDetected;
 
@@ -563,8 +564,18 @@ void resetDisplayLoop() {
 
 
 void detectedDisplayLoop() {
-  setColor(YELLOW);                         
+int x = 0;
+Wheel.set(LOOP);
+  while (x < 6){
+    setColorOnFace(YELLOW, x); 
+    if (Wheel.isExpired()) {
+      setColor(OFF);  
+      Wheel.set(LOOP);
+      x++;
+    }                        
+  }
 }
+
 
 void winDisplayLoop() {//Fade random faces on GREEN
 
