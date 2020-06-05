@@ -52,6 +52,7 @@ int randomizer = random(5); //For random face colors at the end of the game
 int brightness = 1; 
 int step = STEP_SIZE;
 Timer HeartBeat;
+int resetPressed;
 
 int numNeighbors;
 int numDetected;
@@ -118,8 +119,9 @@ void loop() {   //Main Loop of the tile
   }
 
 //RESET GAME Reset all tiles conected
-
+if (resetPressed == 0) {
   if (buttonLongPressed()) {
+    resetPressed = 1;
     gameState = RESET;
     roundTimer.set(ROUND_TIME);
   }
@@ -128,12 +130,13 @@ void loop() {   //Main Loop of the tile
     if ( !isValueReceivedOnFaceExpired( f ) ) { // Have we seen an neighbor
       byte neighborGameState = getGameState(getLastValueReceivedOnFace(f));
       if (neighborGameState == RESET) {
+        resetPressed = 1;
         gameState = RESET;
         roundTimer.set(ROUND_TIME);
       }
     }
   }
-  
+} 
 //Button imput used
   buttonSingleClicked();
   buttonDoubleClicked();
@@ -170,6 +173,9 @@ void loop() {   //Main Loop of the tile
 }
 
 void slaveLoop() { //Starting gamestate (Cornfield)
+  if (roundTimer.isExpired()){
+      resetPressed = 0;
+  }
   
   FOREACH_FACE(f) {
     if ( !isValueReceivedOnFaceExpired( f ) ) { // Have we seen an neighbor?? Change ALL Cornfield if KEY attached.
@@ -290,7 +296,8 @@ if (Hear == NH && buttonSingleClicked()) { //If you are in a neighbor tile and c
         }
     }
 
-    FOREACH_FACE(f) { //Extra feature, change a tile
+//Extra feature, change a tile
+        FOREACH_FACE(f) {
           if ( !isValueReceivedOnFaceExpired( f ) ) { 
             byte neighborGameState = getGameState(getLastValueReceivedOnFace(f));
               if (neighborGameState == SWAP){
@@ -303,7 +310,7 @@ if (Hear == NH && buttonSingleClicked()) { //If you are in a neighbor tile and c
         if (isAlone() && Hear == NH){ //Prevent cheating avoiding to move tile if you are there
                 CWIN--;
                 gameState = SWAP;
-    }
+        }
 }
 
 void citizenLoop() {
@@ -357,7 +364,8 @@ if (Smell == NS && buttonSingleClicked()) { //If you are in a neighbor tile and 
          }
      }
 
-  FOREACH_FACE(f) { //Extra feature, change a tile
+//Extra feature, change a tile
+        FOREACH_FACE(f) {
           if ( !isValueReceivedOnFaceExpired( f ) ) {
             byte neighborGameState = getGameState(getLastValueReceivedOnFace(f));
               if (neighborGameState == SWAP){
@@ -370,15 +378,15 @@ if (Smell == NS && buttonSingleClicked()) { //If you are in a neighbor tile and 
                 CWIN--;
                 gameState = SWAP;
       
-   }
+        }
 }
 
-void swapLoop() { //Extra feature loop, change a tile
+void swapLoop() { //Extra feature, change a tile
   numNeighbors = 0;
         FOREACH_FACE(f) {
           if ( !isValueReceivedOnFaceExpired( f ) ) { 
             byte neighborGameState = getGameState(getLastValueReceivedOnFace(f));
-              numNeighbors++;
+            numNeighbors++;
               if (numNeighbors >= 2){ //Prevent cheating
                   gameState = SLAVE;
               }
@@ -389,6 +397,7 @@ void swapLoop() { //Extra feature loop, change a tile
 void resetLoop() { //Timer to reset the game
   if (roundTimer.isExpired()){
         gameState = SLAVE;  
+        roundTimer.set(ROUND_TIME);
         Hear = NH;
         Smell = NS;  
   }
