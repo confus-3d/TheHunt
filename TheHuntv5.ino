@@ -101,9 +101,12 @@ void loop() {   //Main Loop of the tile
       citizenDisplayLoop();
       break;
     case DETECTED:
-    case UNDETECTED:
       detectedLoop();
       detectedDisplayLoop();
+      break;
+    case UNDETECTED:
+      detectedLoop();
+      undetectedDisplayLoop();
       break;
     case WIN:
       endingLoop();
@@ -431,6 +434,7 @@ void clearLoop() { //Wait to timer and clean the board for next player
   if (roundTimer.isExpired()){
         CWIN--;
         gameState = SLAVE;
+        numDetected = 0;
   }
 }
 
@@ -505,27 +509,35 @@ void monsterDisplayLoop() { //Fade MONSTER position while all board is OFF
       }
    } 
    
-   numDetected = 0; //Turn YELOW if detection worked
-      if (Hear == NH) {
+//Turn YELOW if detection worked
+      if (Hear == NH && numDetected == 0) {
+          setColor(OFF);
           FOREACH_FACE(f) {
               if ( !isValueReceivedOnFaceExpired( f ) ) { // Have we seen a neighbor
                 byte neighborGameState = getGameState(getLastValueReceivedOnFace(f));
                   if (neighborGameState == DETECTED){
                     numDetected++;
+                    brightness = random (255);
               }
           }
+        }
       }
-      if (numDetected == 1){ //If detected action is performed and achieved, turn YELLOW
-        setColor(YELLOW);  
+      if (Hear == NH && numDetected == 1){ //If detected action is performed and achieved, turn YELLOW
+        
+        if (HeartBeat.isExpired()) { 
+          if ( (brightness + step > MAX_BRIGHTNESS ) || (brightness + step < 0 ) ) {
+            step = -step;
+          }
+      
+        brightness += step; 
+        setColor( dim( YELLOW ,  brightness  ) );
+        HeartBeat.set( STEP_TIME_MS );
+        } 
       }
-      if (numDetected == 0){
-        setColor(OFF);  
-      }
-   }
+   
 }
 
 void citizenDisplayLoop() {//Fade CITIZEN position while all board is OFF
-    numDetected = 0;
     
     if (Smell == STINK) {
       if (HeartBeat.isExpired()) { 
@@ -539,23 +551,30 @@ void citizenDisplayLoop() {//Fade CITIZEN position while all board is OFF
       }
    } 
    
-   numDetected = 0; //Turn YELOW if detection worked
-      if (Smell == NS) {
+//Turn YELOW if detection worked
+      if (Smell == NS && numDetected == 0) {
+          setColor(OFF);
           FOREACH_FACE(f) {
               if ( !isValueReceivedOnFaceExpired( f ) ) { // Have we seen a neighbor
                 byte neighborGameState = getGameState(getLastValueReceivedOnFace(f));
                   if (neighborGameState == DETECTED){
                     numDetected++;
+                    brightness = random (255);
               }
           }
+        }
       }
-      if (numDetected == 1){//If detected action is performed and achieved, turn YELLOW
-        setColor(YELLOW);  
+      if (Smell == NS && numDetected == 1){//If detected action is performed and achieved, turn YELLOW
+        if (HeartBeat.isExpired()) { 
+          if ( (brightness + step > MAX_BRIGHTNESS ) || (brightness + step < 0 ) ) {
+            step = -step;
+          }
+      
+        brightness += step; 
+        setColor( dim( YELLOW ,  brightness  ) );
+        HeartBeat.set( STEP_TIME_MS );
+        } 
       }
-      if (numDetected == 0){
-        setColor(OFF);  
-      }
-   }
 }
 
 void resetDisplayLoop() {
@@ -573,6 +592,23 @@ Wheel.set(LOOP);
       Wheel.set(LOOP);
       x++;
     }                        
+  }
+}
+
+void undetectedDisplayLoop() {
+int x = 0;
+Wheel.set(LOOP);
+  while (x < 2){ 
+    if (Wheel.isExpired()) {
+      Wheel.set(LOOP);
+      x++;
+    }  
+    if (x == 0) {
+      setColor(YELLOW);  
+    }     
+    if (x == 1) {
+      setColor(OFF);  
+    }                           
   }
 }
 
