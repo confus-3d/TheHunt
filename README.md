@@ -55,7 +55,7 @@ If MONSTER and FARMER are in the same Blink. MONSTER kill the FARMER and Win. An
 # Advanced Mode: (18 Blinks recomended)
 
 As a NEW action, in their turn, players can remove from the cornfield ONE blink and put it on a new spot reshaping the Cornfield.
-You can remove ANY blink EXCEPT the blink YOU are actually in. (Because yo can´t teleport!)
+You can remove ANY blink EXCEPT the blink YOU are actually in. (Because you can´t teleport!)
 But you can remove the blink where the other player is (Use it in your own benefice if you think you know where the other player is)
 Remember that all Blinks must touch at least 2 Blinks to make a valid movement.
 NOTE: This count as your action and KEY will turn BLUE waiting for next player.
