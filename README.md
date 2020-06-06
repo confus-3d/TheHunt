@@ -29,12 +29,12 @@ Once done, remove the KEY and do the same for the next player.
 This first action is visible for both players.
 
 # Rounds:
-![TheHuntInstruction2](/images/instruction2.jpg)
+![TheHuntInstruction3](/images/instruction2.jpg)
 KEY shows the active player, the other player close their eyes. (MONSTER is RED player, FARMER is GREEN player)
 
 The game go in rounds following this scheme:
 
-1 - Active Player put the KEY blink on the Cornfield, revealing the actual position of that player. 
+1 - Active Player attach the KEY blink on the Cornfield, revealing the actual position of that player. 
 
 2 - Active Player have to choose ONE action:
 
