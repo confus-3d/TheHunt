@@ -160,7 +160,6 @@ if (resetPressed == 0) {
     case KE:
     case KWM:
     case KWC:
-    case DETECTED:
     case UNDETECTED:
     case WIN:
     case LOSE:
