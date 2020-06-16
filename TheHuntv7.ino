@@ -1,5 +1,5 @@
 /*
-    The Hunt
+    The Hunt 
     Lead development by FJ Rios
     original game by FJ Rios
 
