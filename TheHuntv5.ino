@@ -362,8 +362,8 @@ if (Smell == STINK && buttonSingleClicked()){ //If you are in the tile and click
 if (Smell == NS && buttonSingleClicked()) { //If you are in a neighbor tile and click it, perform move
   FOREACH_FACE(f) {
           if ( !isValueReceivedOnFaceExpired( f ) ) { 
-            byte neighborHear = getHear(getLastValueReceivedOnFace(f));
-              if (neighborHear == STINK){
+            byte neighborSmell = getSmell(getLastValueReceivedOnFace(f));
+              if (neighborSmell == STINK){
                   Smell = STINK;
                   gameState = CLEARC;
                   roundTimer.set(ROUND_TIME);
