@@ -26,7 +26,7 @@ Every time you put the KEY on the Cornfield, it reveals the position of the MONS
 
 To start the game, every player start on a side of the cornfield, aproximate the KEY and choose a starting spot. The KEY MUST touch that starting spot.
 Once done, remove the KEY and do the same for the next player.
-This first action is visible for both players.
+**This first action is visible for both players.**
 
 # Rounds:
 ![TheHuntInstruction3](/images/instruction3.jpg)
