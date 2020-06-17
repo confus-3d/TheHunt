@@ -509,7 +509,7 @@ void keyDisplayLoop() { //Show KEY status
   }
 }
 void monsterDisplayLoop() { //Fade MONSTER position while all board is OFF
-
+    setColor(OFF); 
     if (Hear == NOISE) {
       if (HeartBeat.isExpired()) { 
         if ( (brightness + step > MAX_BRIGHTNESS ) || (brightness + step < 0 ) ) {
@@ -551,7 +551,7 @@ void monsterDisplayLoop() { //Fade MONSTER position while all board is OFF
 }
 
 void citizenDisplayLoop() {//Fade CITIZEN position while all board is OFF
-    
+    setColor(OFF); 
     if (Smell == STINK) {
       if (HeartBeat.isExpired()) { 
         if ( (brightness + step > MAX_BRIGHTNESS ) || (brightness + step < 0 ) ) {
