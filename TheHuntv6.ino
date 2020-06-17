@@ -55,6 +55,7 @@ Timer HeartBeat;
 int resetPressed;
 Timer Wheel;
 #define LOOP 200
+byte wheelFace = 0;
 int numNeighbors;
 int numDetected;
 
