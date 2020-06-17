@@ -581,16 +581,12 @@ void resetDisplayLoop() {
 
 
 void detectedDisplayLoop() {
-int x = 0;
-Wheel.set(LOOP);
-  while (x < 6){
-    setColorOnFace(YELLOW, x); 
     if (Wheel.isExpired()) {
-      setColor(OFF);  
+      setColor(OFF); 
+      setColorOnFace(YELLOW, wheelFace); 
       Wheel.set(LOOP);
-      x++;
+      if (wheelFace > 4) {wheelFace = 0;} else {wheelFace++;}
     }                        
-  }
 }
 
 void undetectedDisplayLoop() {
