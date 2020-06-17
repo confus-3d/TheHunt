@@ -155,8 +155,6 @@ if (resetPressed == 0) {
     case SLAVE:
     case CLEARM:
     case CLEARC:
-    case KM:
-    case KC:
     case KE:
     case KWM:
     case KWC:
@@ -166,9 +164,9 @@ if (resetPressed == 0) {
     case SWAP:
       sendData = (gameState);
       break;
+    case KM:
+    case KC:
     case MONSTER:
-      sendData = (gameState) + (Hear << 4) + (Smell << 5);
-      break;
     case CITIZEN:
       sendData = (gameState) + (Hear << 4) + (Smell << 5);
       break;
