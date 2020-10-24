@@ -9,6 +9,7 @@ Game for Blinks by Move 38
 
 # Story:
 ![TheHuntComic](/images/comic1.jpg)
+
 You are a peaceful FARMER with a small Cornfield.
 One day, during your labour, you see on the ground a fresh footprint.
 You take a closer look to the footprint and realize that is not a normal footprint.
@@ -17,6 +18,7 @@ There is no time to be scared. You have to RUN.
 
 # Set Up:
 ![TheHuntInstruction1](/images/instruction1.jpg)
+
 All blinks load showing the Cornfield.
 Arrange the Cornfield as you want, for better gameplay all Blinks should touch at least 2 Blinks.
 
@@ -30,6 +32,7 @@ Once done, remove the KEY and do the same for the next player.
 
 # Rounds:
 ![TheHuntInstruction3](/images/instruction3.jpg)
+
 KEY shows the active player, the other player close their eyes. (MONSTER is RED player, FARMER is GREEN player)
 
 The game go in rounds following this scheme:
