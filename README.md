@@ -33,7 +33,7 @@ Once done, remove the KEY and do the same for the next player.
 # Rounds:
 ![TheHuntInstruction3](/images/instruction3.jpg)
 
-KEY shows the active player, the other player close their eyes. (MONSTER is RED player, FARMER is GREEN player)
+MONSTER player is RED player, FARMER player is GREEN
 
 The game go in rounds following this scheme:
 
@@ -45,7 +45,7 @@ The game go in rounds following this scheme:
       
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Smell/Hear: Press your actual position to Smell if you are the MONSTER or Hear if you are the FARMER. 
 
-(If you are the monster and the farmer is on a neighbor cell, you smell it and 3 surroundings blinks became YELLOW, one of them has the farmer, if you are the farmer and the monster is on a neighbour cell, you hear it and all surroundings blinks became YELLOW but you don't know where is the monster. If you don´t find anything, only your tile will flash YELLOW)
+(If you smell the Farmer, 3 surroundings blinks became YELLOW, one of them has the Farmer, if you hear the Monster all surroundings blinks became YELLOW, one of them has the Monster. If you don´t find your oponent, only your tile will flash YELLOW)
       
 3 - Once action is done, KEY turns BLUE, now you can pick it and it will change to the colour of the next player. Pass the KEY and next player Round begin.
 
