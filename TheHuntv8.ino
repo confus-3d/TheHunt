@@ -75,25 +75,26 @@ void loop() {   //Main Loop
     case RESET: case SLAVE: 
     case KE: case KWM: case KWC: case WIN: case LOSE:
       sendData = (gameState);
+      setValueSentOnAllFaces(sendData);
       break;
-    case KM: case KC: case MONSTER: case CITIZEN: case CLEARM: case CLEARC:
+    case KM: case KC: case MONSTER: case CITIZEN:
       sendData = (gameState) + (Hear << 4) + (Smell << 5);
+      setValueSentOnAllFaces(sendData);
       break;
   }
-  if (gameState != DETECTED){setValueSentOnAllFaces(sendData);}
   
   switch (gameState) { //Detects gamestate
     case SLAVE: slaveLoop(); slaveDisplayLoop(); break;
     case KM: case KC: case KE: case KWM: case KWC: keyLoop(); keyDisplayLoop(); break;
-    case MONSTER: monsterLoop(); monsterDisplayLoop(); break;
-    case CITIZEN: citizenLoop(); citizenDisplayLoop(); break;
-    case RESET: resetLoop(); break;
-    case CLEARM: clearLoop(); monsterDisplayLoop(); break;
-    case CLEARC: clearLoop(); citizenDisplayLoop(); break;
+    case MONSTER: monsterLoop(); playerDisplayLoop(); break;
+    case CITIZEN: citizenLoop(); playerDisplayLoop(); break;
+    case RESET: resetLoop(); resetDisplayLoop(); break;
+    case CLEARM: clearLoop(); playerDisplayLoop(); break;
+    case CLEARC: clearLoop(); playerDisplayLoop(); break;
     case DETECTED: detectedLoop(); detectedDisplayLoop(); break;
     case UNDETECTED: detectedLoop(); undetectedDisplayLoop(); break;
-    case WIN: winDisplayLoop(); winLoop(); break;
-    case LOSE: loseDisplayLoop(); winLoop(); break;
+    case WIN: slaveDisplayLoop(); winLoop(); break;
+    case LOSE: slaveDisplayLoop(); winLoop(); break;
     case SWAP: swapLoop(); swapDisplayLoop(); break;
   }
 
@@ -120,6 +121,7 @@ void loop() {   //Main Loop
 void slaveLoop() { //Starting gamestate (Cornfield)
   numDetected = 0;
   if (roundTimer.isExpired()){resetPressed = 0;}
+  if (buttonSingleClicked()){}
   FOREACH_FACE(f) {
     if ( !isValueReceivedOnFaceExpired( f ) ) { // Have we seen an neighbor?? Change ALL Cornfield if KEY attached.
       byte neighborGameState = getGameState(getLastValueReceivedOnFace(f));
@@ -174,8 +176,8 @@ void monsterLoop() {
           if ( !isValueReceivedOnFaceExpired( f ) ) {
             byte neighborGameState = getGameState(getLastValueReceivedOnFace(f));
             byte neighborHear = getHear(getLastValueReceivedOnFace(f));
+              if (neighborHear == NOISE){Hear = NH;}
               if (neighborGameState == CLEARM) {
-                if (neighborHear == NOISE){Hear = NH;}
                 gameState = CLEARM;
                 roundTimer.set(ROUND_TIME);
               }
@@ -217,6 +219,7 @@ if (Hear == NOISE && buttonSingleClicked()){ //If you are in the tile and click 
                     Hear = NOISE;
                     gameState = CLEARM;
                     roundTimer.set(ROUND_TIME);
+                    Wheel.set(LOOP);
                 }
             }
         }
@@ -231,8 +234,8 @@ void citizenLoop() {
           if ( !isValueReceivedOnFaceExpired( f ) ) { 
             byte neighborGameState = getGameState(getLastValueReceivedOnFace(f));
             byte neighborSmell = getSmell(getLastValueReceivedOnFace(f));
+              if (neighborSmell == STINK){Smell = NS;}
               if (neighborGameState == CLEARC) {
-                if (neighborSmell == STINK){Smell = NS;}
                 gameState = CLEARC;
                 roundTimer.set(ROUND_TIME);
               }
@@ -271,6 +274,7 @@ void citizenLoop() {
                     Smell = STINK;
                     gameState = CLEARC;
                     roundTimer.set(ROUND_TIME);
+                    Wheel.set(LOOP);
                 }   
             }
     }
@@ -306,6 +310,9 @@ void clearLoop() { //Wait to timer and clean the board for next player
 
   if (CWIN <= 0 && Hear == NH && Smell == STINK){gameState = WIN;}//Detect WIN condition
   if (Smell == STINK && Hear == NOISE){gameState = LOSE;} //Detect LOSE condition
+
+  if (!Wheel.isExpired()) {setValueSentOnAllFaces((Hear << 4) + (Smell << 5));}
+  if (Wheel.isExpired()) {setValueSentOnAllFaces((gameState) + (Hear << 4) + (Smell << 5));}
 
   winLoop();
 
@@ -355,10 +362,12 @@ void slaveDisplayLoop() { //Fade random faces on Cornfield
       if (HeartBeat.isExpired()) { 
         if (brightness + step > MAX_BRIGHTNESS ) {step = -step;}
         if (brightness + step < 0 ) {step = -step; randomizer = random(5);}
-      brightness += step;  
-      HeartBeat.set( STEP_TIME_MS );
+        brightness += step;  
+        HeartBeat.set( STEP_TIME_MS );
       }
-      setColorOnFace( dim( YELLOW,  brightness  ), randomizer);                       
+      if (gameState == WIN){setColorOnFace( dim( GREEN,  brightness  ), randomizer);} 
+      if (gameState == LOSE){setColorOnFace( dim( RED,  brightness  ), randomizer);}
+      if (gameState == SLAVE){setColorOnFace( dim( YELLOW,  brightness  ), randomizer);}               
 }
 
 
@@ -383,15 +392,25 @@ void keyDisplayLoop() { //Show KEY status
   }
 }
 
-void monsterDisplayLoop() { //Fade MONSTER position while all board is OFF
+void playerDisplayLoop() { //Fade MONSTER position while all board is OFF
     if (Hear == NOISE) {
       if (HeartBeat.isExpired()) { 
         if ( (brightness + step > MAX_BRIGHTNESS ) || (brightness + step < 0 ) ) {step = -step;}
         brightness += step; 
         HeartBeat.set( STEP_TIME_MS );
       }
-      setColor( dim( RED ,  brightness  ) );
-   } 
+      if (gameState == MONSTER || gameState == CLEARM){setColor( dim( RED ,  brightness  ) );}
+   }
+   
+   if (Smell == STINK) {
+      if (HeartBeat.isExpired()) { 
+        if ( (brightness + step > MAX_BRIGHTNESS ) || (brightness + step < 0 ) ) {step = -step;}
+        brightness += step; 
+        HeartBeat.set( STEP_TIME_MS );
+      }
+      if (gameState == CITIZEN || gameState == CLEARC){setColor( dim( GREEN ,  brightness  ) );}
+   }
+    
       if (numDetected == 0) {//Turn YELOW if detection worked
           FOREACH_FACE(f) {
               if ( !isValueReceivedOnFaceExpired( f ) ) { // Have we seen a neighbor
@@ -410,36 +429,6 @@ void monsterDisplayLoop() { //Fade MONSTER position while all board is OFF
           HeartBeat.set( STEP_TIME_MS );
         }
         setColor( dim( YELLOW ,  brightness  ) );
-      }
-}
-
-void citizenDisplayLoop() {//Fade CITIZEN position while all board is OFF
-    if (Smell == STINK) {
-      if (HeartBeat.isExpired()) { 
-        if ( (brightness + step > MAX_BRIGHTNESS ) || (brightness + step < 0 ) ) {step = -step;}
-        brightness += step; 
-        HeartBeat.set( STEP_TIME_MS );
-      }
-      setColor( dim( GREEN ,  brightness  ) );
-   } 
-      if (numDetected == 0) {//Turn YELOW if detection worked
-          FOREACH_FACE(f) {
-              if ( !isValueReceivedOnFaceExpired( f ) ) { // Have we seen a neighbor
-                byte neighborGameState = getGameState(getLastValueReceivedOnFace(f));
-                  if (neighborGameState == DETECTED){
-                    numDetected = 1;
-                    brightness = random (255);
-              }
-          }
-        }
-      }
-      if (numDetected == 1){//If detected action is performed and achieved, turn YELLOW
-        if (HeartBeat.isExpired()) { 
-          if ( (brightness + step > MAX_BRIGHTNESS ) || (brightness + step < 0 ) ) {step = -step;}
-          brightness += step; 
-          HeartBeat.set( STEP_TIME_MS );
-        }
-        setColor( dim( YELLOW ,  brightness  ) ); 
       }
 }
 
@@ -467,25 +456,8 @@ void undetectedDisplayLoop() {
     if (wheelFace == 1) {setColor(YELLOW);}                             
 }
 
-
-void winDisplayLoop() {//Fade random faces on GREEN
-      if (HeartBeat.isExpired()) { 
-        if (brightness + step > MAX_BRIGHTNESS ) {step = -step;}
-        if (brightness + step < 0 ) {step = -step; randomizer = random(5);}
-        brightness += step;  
-        HeartBeat.set( STEP_TIME_MS );
-      }
-      setColorOnFace( dim( GREEN,  brightness  ), randomizer);              
-}
-
-void loseDisplayLoop() {//Fade random faces on RED
-      if (HeartBeat.isExpired()) { 
-        if (brightness + step > MAX_BRIGHTNESS ) {step = -step;}
-        if (brightness + step < 0 ) {step = -step; randomizer = random(5);}
-        brightness += step;  
-        HeartBeat.set( STEP_TIME_MS );
-      }
-      setColorOnFace( dim( RED,  brightness  ), randomizer);                       
+void resetDisplayLoop() {
+  setColor(YELLOW);                            
 }
 
 /////////////////
