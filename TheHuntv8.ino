@@ -4,6 +4,7 @@
     original game by FJ Rios
     12+ Blinks          
     2 Players (MONSTER=RED and CITIZEN=GREEN)
+    Playing time: 10 min
     Rules:
     1st- Leave a blink alone, this will be KEY blink. Double click to chose first player.
     2nd- Player attach KEY to the Blinks Board, and press a Blink adjacent to te KEY to move to starting position.
