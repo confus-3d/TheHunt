@@ -47,7 +47,7 @@ The game go in rounds following this scheme:
       
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Smell/Hear: Press your actual position to Smell if you are the MONSTER or Hear if you are the FARMER. 
 
-(If you smell the Farmer, 3 surroundings blinks became YELLOW, one of them has the Farmer, if you hear the Monster all surroundings blinks became YELLOW, one of them has the Monster. If you don´t find your oponent, only your tile will flash YELLOW)
+(If you smell the Farmer, up to 3 surroundings blinks became YELLOW, one of them has the Farmer, if you hear the Monster all surroundings blinks became YELLOW, one of them has the Monster. If you don´t find your oponent, only your tile will flash YELLOW)
       
 3 - Once action is done, KEY turns BLUE, now you can pick it and it will change to the colour of the next player. Pass the KEY and next player Round begin.
 
