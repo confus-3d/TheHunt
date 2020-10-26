@@ -3,9 +3,11 @@
 # TheHunt
 Game for Blinks by Move 38
 
-12 or more blinks. (18 recomended)
+12 or more blinks.
 
 2 players.
+
+Playing time: 10 min.
 
 # Story:
 ![TheHuntComic](/images/comic1.jpg)
