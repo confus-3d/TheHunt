@@ -20,8 +20,9 @@
     -Press your actual position to HEAR in the surroundings and check if MONSTER is adjacent to your tile.
     If you HEAR the MONSTER all adjacent tiles turn YELLOW
     If you avoid the MONSTER for several rounds, you win and the board turns GREEN.
-    ADVANCED MODE: (18 Blinks Recomended)
+    ADVANCED MODE:
     You can, instead using your action, take a tile from the board and put it into another place.
+    You can pick the tile you want EXCEPT the tile you are on, but you can choose the tile where you think the other player is.
     This count as your action. The new position must touch 2 blinks to be valid and will flash yellow
     --------------------
     Blinks by Move38
