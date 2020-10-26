@@ -55,7 +55,7 @@ If the FARMER survive 20 rounds. FARMER Win. And the board turn GREEN.
 
 If MONSTER and FARMER are in the same Blink. MONSTER kill the FARMER and Win. And the board turn RED.
 
-# Advanced Mode: (18 Blinks recomended)
+# Advanced Mode: 
 
 As a THIRD action, in their turn, players can remove from the cornfield ONE blink and put it on a new spot reshaping the Cornfield.
 You can remove ANY blink EXCEPT the blink YOU are actually in. (Because you can´t teleport!)
